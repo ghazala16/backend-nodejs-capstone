@@ -5,13 +5,14 @@ const cors = require('cors');
 const pinoLogger = require('./logger');
 
 const connectToDatabase = require('./models/db');
-const { loadData } = require('./util/import-mongo/index'); // loadData is unused - remove if not needed
+// Removed loadData since it's unused
+// const { loadData } = require('./util/import-mongo/index');
 
 const app = express();
 app.use('*', cors());
 const port = 3063;
 
-// Connect to MongoDB; we just do this one time
+// Connect to MongoDB
 connectToDatabase()
     .then(() => {
         pinoLogger.info('Connected to DB');
