@@ -22,9 +22,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    rules: {
-    semi: 'off'
-}
-
+    semi: 0   // ✅ disable the semicolon rule
   }
 }
