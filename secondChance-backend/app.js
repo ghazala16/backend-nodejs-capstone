@@ -14,10 +14,10 @@ const port = 3060;
 
 // Connect to MongoDB; we just do this one time
 connectToDatabase()
-    .then(() => {
-        pinoLogger.info('Connected to DB');
-    })
-    .catch((e) => console.error('Failed to connect to DB', e));
+  .then(() => {
+    pinoLogger.info('Connected to DB')
+  })
+  .catch((e) => console.error('Failed to connect to DB', e))
 
 app.use(express.json());
 
@@ -47,5 +47,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+  console.log(`Server running on port ${port}`)
+})
+
