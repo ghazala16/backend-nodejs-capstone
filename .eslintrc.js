@@ -22,5 +22,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
+    semi: ['error', 'always']  // 👈 This enforces semicolons
   }
 }
