@@ -5,7 +5,7 @@ const cors = require('cors')
 const pinoLogger = require('./logger')
 const path = require('path')
 const connectToDatabase = require('./models/db')
-// const { loadData } = require('./util/import-mongo/index') // remove if unused
+const { loadData } = require('./util/import-mongo/index') // remove if unused
 
 const app = express()
 app.use('*', cors())
@@ -14,6 +14,7 @@ const port = 3060
 connectToDatabase()
   .then(() => {
     pinoLogger.info('Connected to DB')
+    loadData();
   })
   .catch((e) => console.error('Failed to connect to DB', e))
 

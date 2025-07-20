@@ -8,7 +8,9 @@ router.get('/', async (req, res, next) => {
         // Task 1: Connect to MongoDB using connectToDatabase database. Remember to use the await keyword and store the connection in `db`
         const db = await connectToDatabase();
 
-        const collection = db.collection("gifts");
+        //const collection = db.collection("gifts");
+        const collection = db.collection("secondChanceItems");
+
 
         // Initialize the query object
         let query = {};
@@ -25,10 +27,14 @@ router.get('/', async (req, res, next) => {
         if (req.query.condition) {
             query.condition = req.query.condition;
         }
+        // if (req.query.age_years) {
+        //     // {{insert code here}}
+        //     query.age_years = { $lte: parseInt(req.query.age_years) };
+        // }
         if (req.query.age_years) {
-            // {{insert code here}}
-            query.age_years = { $lte: parseInt(req.query.age_years) };
+            query.age_years = { $lte: parseFloat(req.query.age_years) };
         }
+        
 
         // Task 4: Fetch filtered gifts using the find(query) method. Make sure to use await and store the result in the `gifts` constant
         const gifts = await collection.find(query).toArray();
